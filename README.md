@@ -8,7 +8,7 @@ A [PyTorch](https://pytorch.org/) implementation of [RetinaFace: Single-stage De
 |:------------------------------|:------:|:------:|:------:|
 | Mxnet(Multiple-Scale testing) | 88.72% | 86.97% | 79.19% |
 | Mxnet(Original Scale)         | 89.58% | 87.11% | 69.12% |
-| Pytorch(Original Scale)       | 92.68% | 90.85% | 79.78% |
+| Pytorch(Original Scale)       | 92.65% | 90.91% | 80.23% |
 
 ## Dependencies
 
