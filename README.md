@@ -2,6 +2,10 @@
 
 A [PyTorch](https://pytorch.org/) implementation of [RetinaFace: Single-stage Dense Face Localisation in the Wild](https://arxiv.org/abs/1905.00641). The official code in Mxnet can be found [here](https://github.com/deepinsight/insightface/tree/master/RetinaFace).
 
+## TODO
+
+[ ] Move to detectron2
+
 ## WiderFace Val Performance in single scale When using Mobilenet0.25 as backbone net.
 
 | Style                       |  easy   | medium |  hard  |
