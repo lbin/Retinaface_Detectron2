@@ -1,0 +1,43 @@
+_BASE_: "../Base_RetinaFace.yaml"
+DATASETS:
+  TRAIN: ("widerface_train",)
+  TEST: ("widerface_val",)
+MODEL:
+  WEIGHTS: ""
+  PIXEL_MEAN: [0.485, 0.456, 0.406]
+  PIXEL_STD: [0.229, 0.224, 0.225]
+  BACKBONE:
+    NAME: "build_torch_resnet_fpn_backbone"
+    FREEZE_AT: 0
+  RESNETS:
+    DEPTH: 50
+    STRIDE_IN_1X1: False
+    NORM: 'SyncBN'
+  FPN:
+    NORM: 'SyncBN'
+  RETINANET:
+    NUM_CLASSES: 1
+    IN_FEATURES: ['p3', 'p4', 'p5']
+    SCORE_THRESH_TEST: 0.02
+    TOPK_CANDIDATES_TEST: 5000
+    NMS_THRESH_TEST: 0.4
+    WITH_DCNv2: True
+    NORM: 'SyncBN'
+    SMOOTH_L1_LOSS_BETA: 0.0
+  ANCHOR_GENERATOR:
+    SIZES: [[16, 32], [64, 128], [256, 512]]
+    ASPECT_RATIOS: [[1.0]]
+SOLVER:
+  IMS_PER_BATCH: 32
+  BASE_LR: 0.02 # Note that RetinaNet uses a different default learning rate
+  STEPS: (210000, 250000)
+  MAX_ITER: 270000
+  CHECKPOINT_PERIOD: 10000
+INPUT:
+  MIN_SIZE_TRAIN: (540, 640, 672, 704, 736, 768, 800)
+  MAX_SIZE_TRAIN: 1920
+  MIN_SIZE_TEST: 0
+  MAX_SIZE_TEST: 0
+  CROP:
+    ENABLED: True
+  FORMAT: "RGB"
